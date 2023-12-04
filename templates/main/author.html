@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    {% include 'main/nav.html' %}
+
+    <!-- <h1>name: {{author.name}}</h1> -->
+
+    <h4>Your articles</h4>
+
+    <ul>
+        <li>
+            {% for article in author.article_set.all %}
+
+            <a href="{% url 'get_article' article.pk %}">{{article}}</a>
+
+            {% endfor %}
+        </li>
+    </ul>
+
+    <style>
+        h1{
+            color: white;
+        }
+        h4{
+            color: white;
+            margin-top: 20px;
+        }
+        ul{
+            font-size: 25px;
+            margin-bottom: 25px;
+
+        }
+    </style>
+
+{% endblock %}

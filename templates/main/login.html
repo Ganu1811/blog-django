@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block content %}      
+
+{% load crispy_forms_tags %}
+
+<div class="container py-5">
+  <h1>Login</h1>
+  <form method="POST" id="login-form">
+    {% csrf_token %}
+    {{ login_form|crispy }}
+    <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Login</button>
+  </form>
+  
+  <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
+  {% for message in messages %}
+
+      <p id="messages">{{ message }}</p>
+
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('login-form').addEventListener('submit', function (event) {
+          alert("login successfull");
+      });
+  });
+</script>
+
+<style>
+  .container{
+    color: white;
+  }
+</style>
+
+{% endblock %}
